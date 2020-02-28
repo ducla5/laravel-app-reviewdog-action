@@ -9,6 +9,10 @@ inputs:
     description: 'Reporter of reviewdog command [github-pr-check,github-pr-review].'
     default: 'github-pr-check'
     required: false
+  level:
+    description: 'Report level for reviewdog [info,warning,error]'
+    default: 'error'
+    required: false
   phpcs_args:
     description: 'Arguments to pass to phpcs'
     default: '.'
@@ -35,6 +39,7 @@ runs:
     - ${{ inputs.phpmd_args }}
     - ${{ inputs.phpstan_args }}
     - ${{ inputs.directory }}
+    - ${{ inputs.level }}
 branding:
   icon: 'edit'
   color: 'gray-dark'

@@ -15,17 +15,13 @@ export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
 EXIT_CODE=$?
 
-cat /tmp/phpcs_result_checkstyle.xml
-
-< /tmp/phpcs_result_checkstyle.xml | reviewdog -f=checkstyle -name="phpcs" -reporter="${INPUT_REPORTER:-github-pr-check}"
+cat /tmp/phpcs_result_checkstyle.xml | reviewdog -f=checkstyle -name="phpcs" -reporter="${INPUT_REPORTER:-github-pr-check}" -level="${INPUT_LEVEL}"
 
 /usr/local/bin/phpmd.phar ${INPUT_PHPMD_ARGS:-\.} xml ./phpmd.xml -dmemory_limit=-1 > /tmp/phpmd-report.xml
 
 EXIT_CODE=$?
 
-cat /tmp/phpmd-report.xml
-
-< /tmp/phpmd-report.xml | reviewdog -f=checkstyle -name="phpmd" -reporter="${INPUT_REPORTER:-github-pr-check}"
+cat /tmp/phpmd-report.xml | reviewdog -f=checkstyle -name="phpmd" -reporter="${INPUT_REPORTER:-github-pr-check}" -level="${INPUT_LEVEL}"
 
 /usr/local/bin/phpstan.phar \
     analyse \
@@ -35,8 +31,6 @@ cat /tmp/phpmd-report.xml
 
 EXIT_CODE=$?
 
-cat /tmp/phpstan-report.xml
-
-< /tmp/phpstan-report.xml | reviewdog -f=checkstyle -name="phpstan" -reporter="${INPUT_REPORTER:-github-pr-check}"
+cat /tmp/phpstan-report.xml | reviewdog -f=checkstyle -name="phpstan" -reporter="${INPUT_REPORTER:-github-pr-check}" -level="${INPUT_LEVEL}"
 
 exit $EXIT_CODE
