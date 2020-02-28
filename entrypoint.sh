@@ -23,11 +23,11 @@ EXIT_CODE2=$?
 
 /usr/local/bin/phpstan.phar \
     analyse \
-    --error-format checkstyle \
+    --error-format phpstan \
     ${INPUT_PHPSTAN_ARGS:-\.} \
     > /tmp/phpstan-report.xml
 
-cat /tmp/phpstan-report.xml | reviewdog -f=checkstyle -name="phpstan" -reporter="${INPUT_REPORTER:-github-pr-check}" -level="${INPUT_LEVEL}"
+cat /tmp/phpstan-report.xml | reviewdog -f=phpstan -name="phpstan" -reporter="${INPUT_REPORTER:-github-pr-check}" -level="${INPUT_LEVEL}"
 
 EXIT_CODE3=$?
 
