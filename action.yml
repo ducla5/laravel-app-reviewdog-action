@@ -1,0 +1,40 @@
+name: 'Run php check code with reviewdog'
+description: 'Run phpcs, phpmd, phpstan to check your code'
+author: 'Duc Anh (ducla)'
+inputs:
+  github_token:
+    description: 'GITHUB_TOKEN.'
+    required: true
+  reporter:
+    description: 'Reporter of reviewdog command [github-pr-check,github-pr-review].'
+    default: 'github-pr-check'
+    required: false
+  phpcs_args:
+    description: 'Arguments to pass to phpcs'
+    default: '.'
+    required: false
+  phpmd_args:
+    description: 'Arguments to pass to phpmd'
+    default: '.'
+    required: false
+  phpstan_args:
+    description: 'Arguments to pass to phpstan'
+    default: '.'
+    required: false
+  directory:
+    description: 'The subdirectory to execute the action in.'
+    default: '.'
+    required: false
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.github_token }}
+    - ${{ inputs.reporter }}
+    - ${{ inputs.phpcs_args }}
+    - ${{ inputs.phpmd_args }}
+    - ${{ inputs.phpstan_args }}
+    - ${{ inputs.directory }}
+branding:
+  icon: 'edit'
+  color: 'gray-dark'

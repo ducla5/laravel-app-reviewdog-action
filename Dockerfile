@@ -1,0 +1,22 @@
+FROM php:7.4-alpine
+
+ARG REVIEWDOG_VERSION=v0.9.18
+ARG PHPCS_VERSION=3.5.4
+ARG PHPMD_VERSION=2.8.2
+ARG PHPSTAN_VERSION=0.12.11
+
+RUN wget -O - -q https://raw.githubusercontent.com/ducla5/reviewdog/master/install.sh| sh -s -- -b /usr/local/bin/ ${REVIEWDOG_VERSION}
+RUN wget -P /usr/local/bin -q https://github.com/squizlabs/PHP_CodeSniffer/releases/download/${PHPCS_VERSION}/phpcs.phar \
+  && wget -P /usr/local/bin -q https://github.com/phpstan/phpstan/releases/download/${PHPSTAN_VERSION}/phpstan.phar \
+  && wget -P /usr/local/bin -q https://phpmd.org/static/${PHPMD_VERSION}/phpmd.phar \
+  && chmod +x /usr/local/bin/phpcs.phar \
+  && chmod +x /usr/local/bin/phpstan.phar \
+  && chmod +x /usr/local/bin/phpmd.phar
+
+RUN apk --no-cache add git \
+ && rm -rf /var/lib/apt/lists/*
+
+COPY entrypoint.sh /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
+WORKDIR /tmp
