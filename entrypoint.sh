@@ -15,9 +15,9 @@ cat /tmp/phpcs_result_checkstyle.xml | reviewdog -f=checkstyle -name="phpcs" -re
 
 EXIT_CODE1=$?
 
-/usr/local/bin/phpmd.phar ${INPUT_PHPMD_ARGS:-\.} xml ./phpmd.xml -dmemory_limit=-1 > /tmp/phpmd-report.xml
+/usr/local/bin/phpmd.phar ${INPUT_PHPMD_ARGS:-\.} text ./phpmd.xml -dmemory_limit=-1 > /tmp/phpmd-report.text
 
-cat /tmp/phpmd-report.xml | reviewdog -f=checkstyle -name="phpmd" -reporter="${INPUT_REPORTER:-github-pr-check}" -level="${INPUT_LEVEL}"
+cat /tmp/phpmd-report.xml | reviewdog -efm="%f:%l %m" -name="phpmd" -reporter="${INPUT_REPORTER:-github-pr-check}" -level="${INPUT_LEVEL}"
 
 EXIT_CODE2=$?
 
