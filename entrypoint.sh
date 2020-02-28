@@ -19,7 +19,7 @@ cat /tmp/phpcs_result_checkstyle.xml
 
 < /tmp/phpcs_result_checkstyle.xml | reviewdog -f=checkstyle -name="phpcs" -reporter="${INPUT_REPORTER:-github-pr-check}"
 
-/usr/local/bin/phpmd.phar ${INPUT_PHPMD_ARGS:-\.} xml ./phpmd.xml > /tmp/phpmd-report.xml
+/usr/local/bin/phpmd.phar ${INPUT_PHPMD_ARGS:-\.} xml ./phpmd.xml -dmemory_limit=-1 > /tmp/phpmd-report.xml
 
 EXIT_CODE=$?
 
