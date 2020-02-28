@@ -31,7 +31,7 @@ cat /tmp/phpmd-report.xml
     analyse \
     vendor/bin/phpstan analyse --error-format checkstyle \
     ${INPUT_PHPSTAN_ARGS:-\.} \
-    > tmp/phpstan-report.xml
+    > /tmp/phpstan-report.xml
 
 EXIT_CODE=$?
 
