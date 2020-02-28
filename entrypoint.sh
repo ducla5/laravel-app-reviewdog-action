@@ -7,7 +7,7 @@ export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 /usr/local/bin/phpcs.phar \
     --report=summary \
     --report-checkstyle=/tmp/phpcs_result_checkstyle.xml \
-    -p -s --colors -d memory_limit=128MB --ignore=*/vendor/* --extensions=php \
+    -p -s --colors -d memory_limit=1G --ignore=vendor --extensions=php \
     --standard=./phpcs.xml \
     --runtime-set ignore_errors_on_exit 1 \
     --runtime-set ignore_warnings_on_exit 1 \
