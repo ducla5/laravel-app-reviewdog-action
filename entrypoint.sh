@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cd "$GITHUB_WORKSPACE"
+cd "$GITHUB_WORKSPACE/${INPUT_DIRECTORY}"
 
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
@@ -8,7 +8,7 @@ export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
     --report=summary \
     --report-checkstyle=/tmp/phpcs_result_checkstyle.xml \
     -p -s --colors -d memory_limit=1G --ignore=*/vendor/* --extensions=php \
-    --standard=./hmkodate/phpcs.xml \
+    --standard=./phpcs.xml \
     --runtime-set ignore_errors_on_exit 1 \
     --runtime-set ignore_warnings_on_exit 1 \
     ${INPUT_PHPCS_ARGS:-\.}
@@ -19,7 +19,7 @@ cat /tmp/phpcs_result_checkstyle.xml
 
 < /tmp/phpcs_result_checkstyle.xml | reviewdog -f=checkstyle -name="phpcs" -reporter="${INPUT_REPORTER:-github-pr-check}"
 
-/usr/local/bin/phpmd.phar ${INPUT_PHPMD_ARGS:-\.} xml ./hmkodate/phpmd.xml > /tmp/phpmd-report.xml
+/usr/local/bin/phpmd.phar ${INPUT_PHPMD_ARGS:-\.} xml ./phpmd.xml > /tmp/phpmd-report.xml
 
 EXIT_CODE=$?
 
