@@ -31,4 +31,6 @@ EXIT_CODE3=$?
 
 cat /tmp/phpstan-report.xml | reviewdog -f=checkstyle -name="phpstan" -reporter="${INPUT_REPORTER:-github-pr-check}" -level="${INPUT_LEVEL}"
 
-! (( $EXIT_CODE1 || $EXIT_CODE2 || $EXIT_CODE3 ))
+if [ $EXIT_CODE1 != 0 ] || [ $EXIT_CODE2 != 0 ] || [ $EXIT_CODE3 != 0 ] ; then
+  exit 1;
+fi
