@@ -29,7 +29,7 @@ cat /tmp/phpmd-report.xml
 
 /usr/local/bin/phpstan.phar \
     analyse \
-    vendor/bin/phpstan analyse --error-format checkstyle \
+    --error-format checkstyle \
     ${INPUT_PHPSTAN_ARGS:-\.} \
     > /tmp/phpstan-report.xml
 
