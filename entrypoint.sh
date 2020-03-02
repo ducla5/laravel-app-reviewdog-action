@@ -21,16 +21,6 @@ cat /tmp/phpmd-report.txt | reviewdog -efm="%f:%l %m" -name="phpmd" -reporter="$
 
 EXIT_CODE2=$?
 
-/usr/local/bin/phpstan.phar \
-    analyse \
-    --error-format raw \
-    ${INPUT_PHPSTAN_ARGS:-\.} \
-    > /tmp/phpstan-report.xml
-
-cat /tmp/phpstan-report.xml | reviewdog -f=phpstan -name="phpstan" -reporter="${INPUT_REPORTER:-github-pr-check}" -level="${INPUT_LEVEL}"
-
-EXIT_CODE3=$?
-
-if [ $EXIT_CODE1 != 0 ] || [ $EXIT_CODE2 != 0 ] || [ $EXIT_CODE3 != 0 ] ; then
+if [ $EXIT_CODE1 != 0 ] || [ $EXIT_CODE2 != 0 ] ; then
   exit 1;
 fi

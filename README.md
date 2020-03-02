@@ -1,7 +1,7 @@
 # GitHub Action: Run php check code with reviewdog
 
 
-This action runs phpcs, phpmd, phpstan with
+This action runs phpcs, phpmd with
 [reviewdog](https://github.com/ducla5/reviewdog) on pull requests to improve
 code review experience.
 
@@ -36,10 +36,6 @@ Optional. Arguments to pass to phpcs.
 
 Optional. Arguments to pass to phpmd. 
 
-
-### `phpstan_args`
-
-Optional. Arguments to pass to phpstan.
 
 ## Example usage
 
