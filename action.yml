@@ -1,5 +1,5 @@
 name: 'Run php check code with reviewdog'
-description: 'Run phpcs, phpmd, phpstan to check your code'
+description: 'Run phpcs, phpmd to check your code'
 author: 'Duc Anh (ducla)'
 inputs:
   github_token:
@@ -21,10 +21,6 @@ inputs:
     description: 'Arguments to pass to phpmd'
     default: '.'
     required: false
-  phpstan_args:
-    description: 'Arguments to pass to phpstan'
-    default: '.'
-    required: false
   directory:
     description: 'The subdirectory to execute the action in.'
     default: '.'
@@ -37,7 +33,6 @@ runs:
     - ${{ inputs.reporter }}
     - ${{ inputs.phpcs_args }}
     - ${{ inputs.phpmd_args }}
-    - ${{ inputs.phpstan_args }}
     - ${{ inputs.directory }}
     - ${{ inputs.level }}
 branding:
