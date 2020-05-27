@@ -2,7 +2,7 @@
 
 
 This action runs phpcs, phpmd with
-[reviewdog](https://github.com/ducla5/reviewdog) on pull requests to improve
+[reviewdog](https://github.com/reviewdog/reviewdog) on pull requests to improve
 code review experience.
 
 
@@ -20,7 +20,7 @@ actions with different config.
 
 ### `directory`
 
-Optional. The subdirectory where your Go code resides.
+Optional. The subdirectory where your php code resides.
 
 ### `reporter`
 
