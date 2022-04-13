@@ -2,6 +2,8 @@
 
 cd "$GITHUB_WORKSPACE/${INPUT_DIRECTORY}"
 
+git config --global --add safe.directory $GITHUB_WORKSPACE
+
 export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
 /usr/local/bin/phpcs.phar \
