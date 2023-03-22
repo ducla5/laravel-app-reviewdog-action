@@ -1,7 +1,7 @@
 FROM php:8.1-alpine
 
-ARG REVIEWDOG_VERSION=v0.10.0
-ARG PHPCS_VERSION=3.7.1
+ARG REVIEWDOG_VERSION=v0.14.1
+ARG PHPCS_VERSION=3.7.2
 ARG PHPMD_VERSION=2.13.0
 
 RUN wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh| sh -s -- -b /usr/local/bin/ ${REVIEWDOG_VERSION}
