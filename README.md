@@ -1,7 +1,5 @@
 # GitHub Action: Run php check code with reviewdog
 
-php8.1のenumに対応。
-
 This action runs phpcs, phpmd with
 [reviewdog](https://github.com/reviewdog/reviewdog) on pull requests to improve
 code review experience.
@@ -53,7 +51,7 @@ jobs:
       - name: Check out code into the workspace
         uses: actions/checkout@v2
       - name: Check Code
-        uses: pnpk/laravel-app-reviewdog-action@php8.1
+        uses: ducla5/laravel-app-reviewdog-action@v1
         with:
           github_token: ${{ secrets.github_token }}
 ```
