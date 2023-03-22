@@ -1,9 +1,9 @@
 # GitHub Action: Run php check code with reviewdog
 
+
 This action runs phpcs, phpmd with
 [reviewdog](https://github.com/reviewdog/reviewdog) on pull requests to improve
 code review experience.
-
 
 
 ## Inputs
